@@ -19,28 +19,49 @@ import { TIME_MODS } from "@/lib/engine/timeOfDay";
 interface Props {
   settings: Settings;
   set: (patch: Partial<Settings>) => void;
+  isFullscreen: boolean;
+  onToggleFullscreen: () => void;
 }
 
-export default function Dashboard({ settings, set }: Props) {
+export default function Dashboard({
+  settings,
+  set,
+  isFullscreen,
+  onToggleFullscreen,
+}: Props) {
   return (
     <div className="pointer-events-auto absolute right-3 top-3 w-64 max-w-[80vw] flex flex-col gap-2 z-20">
       <Panel delay={0.1} className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="text-[10px] uppercase tracking-[0.22em] text-white/55">
             atmosphere
           </div>
-          <button
-            onClick={() => set({ cinematic: !settings.cinematic })}
-            className={
-              "text-[9px] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded " +
-              (settings.cinematic
-                ? "text-white border border-white/30 bg-white/10"
-                : "text-white/45 border border-white/10")
-            }
-            title="Hide UI for cinematic view"
-          >
-            {settings.cinematic ? "ui hidden" : "cinematic"}
-          </button>
+          <div className="flex flex-wrap gap-1 justify-end">
+            <button
+              onClick={onToggleFullscreen}
+              className={
+                "text-[9px] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded " +
+                (isFullscreen
+                  ? "text-white border border-white/30 bg-white/10"
+                  : "text-white/45 border border-white/10")
+              }
+              title="Fill the screen (browser fullscreen)"
+            >
+              {isFullscreen ? "exit full" : "full screen"}
+            </button>
+            <button
+              onClick={() => set({ cinematic: !settings.cinematic })}
+              className={
+                "text-[9px] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded " +
+                (settings.cinematic
+                  ? "text-white border border-white/30 bg-white/10"
+                  : "text-white/45 border border-white/10")
+              }
+              title="Hide UI for cinematic view"
+            >
+              {settings.cinematic ? "ui hidden" : "cinematic"}
+            </button>
+          </div>
         </div>
 
         <Select<BiomeId | "auto">

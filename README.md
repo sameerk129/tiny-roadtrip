@@ -111,13 +111,14 @@ Stations: Neon Mirage (synthwave), Drift FM (lo-fi), Last Signal (post-apocalyps
 
 ## Controls
 
-- **Right panel**: biome / weather / time of day / reality stability / cruise speed / seed re-roll.
+- **Right panel**: biome / weather / time of day / reality stability / cruise speed / seed re-roll, plus **full screen** and **cinematic**.
 - **Left panel**: vehicle toggles (headlights, camper, cargo, solar, antenna, armor, neon, mute).
 - **Bottom**: radio dial + station marquee.
 
 ### Keyboard
 
 - `C` — toggle cinematic (UI hidden)
+- `F` — toggle browser fullscreen (the whole roadtrip view)
 - `P` — save a PNG screenshot of the current frame
 
 ## License
